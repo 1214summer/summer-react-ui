@@ -14,12 +14,6 @@
 - 代码规范工具链：eslint + prittier + stylelint
 - git 提交规范链：husky + commitlint + lint-staged
 
-## 食用指南 🤫
-
-```
-暂无，稍待
-```
-
 ## 待做 List😉
 
 ✅ 已完成 ⭐️ 完善中 ❌ 未开始
@@ -44,9 +38,9 @@
 
 - Progress 进度条 ✅
 
-- Form 表单 ❌
-  
 - Select ✅
+
+- Form 表单 ❌
 
 - DatePicker ❌
   
