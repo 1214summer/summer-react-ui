@@ -1,0 +1,376 @@
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  // 水平模式
+  &-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: $white;
+    border-bottom: $border-width solid $border-color;
+
+    .menu-item,
+    .menu-submenu {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: all $menu-transition;
+
+      &:hover {
+        background-color: $gray-100;
+      }
+
+      &.is-selected {
+        border-bottom: $menu-item-active-border-width solid $primary;
+        color: $primary;
+      }
+    }
+
+    .submenu-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      display: none;
+      min-width: 160px;
+      padding: 5px 0;
+      margin: 2px 0 0;
+      font-size: $font-size-base;
+      color: $body-color;
+      text-align: left;
+      background-color: $white;
+      background-clip: padding-box;
+      border: $border-width solid $border-color;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+
+      .menu-item {
+        display: block;
+        width: 100%;
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        clear: both;
+        font-weight: 400;
+        color: $body-color;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+
+        &:hover {
+          background-color: $gray-100;
+        }
+
+        &.is-selected {
+          color: $primary;
+          background-color: $gray-100;
+          border-bottom: none;
+        }
+      }
+    }
+
+    .menu-submenu.is-open .submenu-content {
+      display: block;
+    }
+  }
+
+  // 垂直模式
+  &-vertical {
+    display: block;
+    background-color: $white;
+    border-right: $border-width solid $border-color;
+    width: 200px;
+
+    .menu-item,
+    .menu-submenu {
+      display: block;
+      position: relative;
+    }
+
+    .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: all $menu-transition;
+
+      &:hover {
+        background-color: $gray-100;
+      }
+
+      &.is-selected {
+        color: $primary;
+        background-color: rgba($primary, 0.08);
+        border-right: $menu-item-active-border-width solid $primary;
+      }
+    }
+
+    .submenu-content {
+      display: none;
+      padding-left: $menu-item-padding-x;
+      background-color: $white;
+
+      .menu-item {
+        &.is-selected {
+          border-right: none;
+        }
+      }
+    }
+
+    .menu-submenu.is-open .submenu-content {
+      display: block;
+    }
+  }
+
+  // 内联模式
+  &-inline {
+    display: block;
+    background-color: $white;
+
+    .menu-item,
+    .menu-submenu {
+      display: block;
+      position: relative;
+    }
+
+    .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: all $menu-transition;
+
+      &:hover {
+        background-color: $gray-100;
+      }
+
+      &.is-selected {
+        color: $primary;
+        background-color: rgba($primary, 0.08);
+      }
+    }
+
+    .submenu-content {
+      display: none;
+      padding-left: $menu-item-padding-x;
+      background-color: $white;
+
+      .menu-item {
+        padding-left: 2 * $menu-item-padding-x;
+      }
+    }
+
+    .menu-submenu.is-open .submenu-content {
+      display: block;
+    }
+  }
+
+  // 暗色主题
+  &-dark {
+    background-color: $dark;
+    color: $white;
+
+    .menu-item {
+      color: $white;
+
+      // &:hover {
+      //   background-color: rgba($white, 0.9);
+      // }
+
+      &.is-selected {
+        color: $primary;
+        background-color: rgba($primary, 0.2);
+      }
+    }
+
+    .submenu-title {
+      color: $white;
+
+    //   &:hover {
+    //     background-color: rgba($white, 0.1);
+    //   }
+    }
+
+    .submenu-content {
+      background-color: $dark;
+      border-color: rgba($white, 0.1);
+
+      .menu-item {
+        color: $white;
+
+        // &:hover {
+        //   background-color: rgba($white, 0.1);
+        // }
+
+        &.is-selected {
+          color: $primary;
+          background-color: rgba($primary, 0.2);
+        }
+      }
+    }
+
+    .menu-group-title {
+      color: rgba($white, 0.65);
+    }
+  }
+
+  // 亮色主题
+  &-light {
+    background-color: $white;
+    color: $body-color;
+
+    .menu-item {
+      color: $body-color;
+
+      &:hover {
+        background-color: $gray-100;
+      }
+
+      &.is-selected {
+        color: $primary;
+        background-color: rgba($primary, 0.08);
+      }
+    }
+
+    .submenu-title {
+      color: $body-color;
+
+      &:hover {
+        background-color: $gray-100;
+      }
+    }
+
+    .submenu-content {
+      background-color: $white;
+      border-color: $border-color;
+
+      .menu-item {
+        color: $body-color;
+
+        &:hover {
+          background-color: $gray-100;
+        }
+
+        &.is-selected {
+          color: $primary;
+          background-color: rgba($primary, 0.08);
+        }
+      }
+    }
+
+    .menu-group-title {
+      color: $gray-600;
+    }
+  }
+}
+
+// 菜单项样式
+.menu-item {
+  padding: $menu-item-padding-y $menu-item-padding-x;
+  cursor: pointer;
+  transition: all $menu-transition;
+  position: relative;
+  box-sizing: border-box;
+
+  &.is-disabled {
+    cursor: not-allowed;
+    color: $gray-400;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+// 子菜单样式
+.menu-submenu {
+  .submenu-title {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    transition: all $menu-transition;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &.is-disabled {
+      cursor: not-allowed;
+      color: $gray-400;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .submenu-icon {
+    margin-left: $menu-item-padding-y;
+    transition: transform 0.3s ease;
+  }
+
+  &.is-open .submenu-icon {
+    transform: rotate(180deg);
+  }
+
+  .submenu-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+// 菜单分组样式
+.menu-group {
+  .menu-group-title {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    color: $gray-600;
+    text-transform: uppercase;
+  }
+
+  .menu-group-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+// 动画效果
+.zoom-in-top-enter-active,
+.zoom-in-top-leave-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transform-origin: center top;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.zoom-in-top-enter-from,
+.zoom-in-top-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.zoom-in-right-enter-active,
+.zoom-in-right-leave-active {
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.zoom-in-right-enter-from,
+.zoom-in-right-leave-to {
+  opacity: 0;
+  transform: scaleX(0);
+}

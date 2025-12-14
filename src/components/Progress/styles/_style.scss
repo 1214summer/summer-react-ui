@@ -1,0 +1,168 @@
+.progress {
+  display: inline-block;
+
+  &-outer {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  &-inner {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+  }
+
+  &-bg {
+    position: relative;
+    background-color: #1890ff;
+    transition: all 0.3s ease 0s;
+    width: 0;
+  }
+
+  &-success-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #52c41a;
+    transition: all 0.3s ease 0s;
+  }
+
+  &-text {
+    display: inline-block;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+    word-break: normal;
+    width: 2em;
+  }
+
+  &-circle-outer {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 14px;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+
+  &-circle {
+    position: relative;
+    display: inline-block;
+
+    &-trail {
+      stroke: #f3f3f3;
+    }
+
+    &-path {
+      stroke: #1890ff;
+      transition: stroke-dasharray 0.3s ease 0s;
+    }
+  }
+
+  // Size variations
+  &-small {
+    .progress-text {
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    &.progress-line {
+      .progress-bg,
+      .progress-success-bg {
+        height: 6px !important;
+      }
+    }
+  }
+
+  // Status variations
+  &-status-exception {
+    .progress-bg,
+    .progress-circle-path {
+      stroke: #ff4d4f;
+    }
+  }
+
+  &-status-success {
+    .progress-bg,
+    .progress-circle-path {
+      stroke: #52c41a;
+    }
+  }
+
+  &-status-active {
+    .progress-bg {
+      position: relative;
+      background: linear-gradient(to right, #1890ff 0%, #40a9ff 100%);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.5) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      }
+    }
+
+    .progress-circle-path {
+      stroke: #1890ff;
+      filter: drop-shadow(0 0 3px rgba(24, 144, 255, 0.4));
+      animation: progress-circle-active 2s ease-in-out infinite;
+    }
+
+    .progress-text {
+      color: #1890ff;
+      font-weight: 500;
+    }
+  }
+}
+
+@keyframes progress-active {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes progress-circle-active {
+  0% {
+    stroke-dasharray: 0 251.2;
+  }
+  50% {
+    stroke-dasharray: 125.6 251.2;
+  }
+  100% {
+    stroke-dasharray: 0 251.2;
+  }
+}
